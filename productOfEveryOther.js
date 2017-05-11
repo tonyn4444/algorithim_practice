@@ -31,3 +31,5 @@ function productOfAllOtherNumbers(arr) {
 var arr = [1, 2, 3, 4];
 
 productOfAllOtherNumbers(arr);
+
+// this gives us a time complexity of O(n^2), but we can do better
