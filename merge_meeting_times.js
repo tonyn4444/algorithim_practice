@@ -7,6 +7,26 @@ var meetingTimes =   [
 ];
 
 function mergeMeetingTimes(arr) {
+	var sortedTimes = arr.slice().sort(function(a, b) {
+		return a.startTime - b.startTime;
+	});
+	
+	var mergedMeetingTimes = [arr[0]];
 
+	for (var i = 1; i < arr.length; i++) {
+		var currentMeetingTime = arr[i];
+		var previousMeetingTime = mergedMeetingTimes[mergedMeetingTimes.length - 1];
+		console.log(mergedMeetingTimes);
+		if (previousMeetingTime.endTime >= currentMeetingTime.startTime) {
+			previousMeetingTime.endTime = Math.max(previousMeetingTime.endTime, currentMeetingTime.endTime);
+		} else {
+			mergedMeetingTimes.push(currentMeetingTime);
+		}
+	}
+	return mergedMeetingTimes;
 }
+
+mergeMeetingTimes(meetingTimes);
+
+
 
